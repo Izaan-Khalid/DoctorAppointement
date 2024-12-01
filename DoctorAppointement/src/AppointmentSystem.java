@@ -40,6 +40,18 @@ public class AppointmentSystem {
         patients.add(patient);
     }
 
+    /* Adds an appointment to the system */
+    public void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
+    }
+
+    public List<Appointment> getAppointments(String name) {
+        return appointments.stream()
+                .filter(a -> a.getDoctor().equalsIgnoreCase(name) || a.getPatient().equalsIgnoreCase(name))
+                .collect(Collectors.toList());
+    }
+    
+
     /**
      * Searches for doctors by their specialization
      * @param specialization The medical specialization to search for
