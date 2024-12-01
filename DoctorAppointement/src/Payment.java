@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  * ================================================================
@@ -78,6 +77,7 @@ public class Payment {
             }
         }
 
+        scanner.close();
         // Display payment status
         System.out.println("Payment " + paymentStatus + " for amount: $" + amount);
     }
@@ -128,6 +128,20 @@ public class Payment {
      */
     public String getPaymentStatus() {
         return paymentStatus;
+    }
+
+    /**
+     * Getter method for payment method (optional, in case the payment method is needed elsewhere).
+     */
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    /**
+     * Getter method for insurance status (optional, in case the insurance status is needed elsewhere).
+     */
+    public boolean isInsurance() {
+        return isInsurance;
     }
 
     /**

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -14,75 +12,6 @@ import java.util.Scanner;
  * ================================================================
  */
 
-// Entity Classes
-/**
- * User class represents a user in the system with attributes: userID, name, and email.
- */
-class User {
-    private String userID;  // Unique identifier for the user
-    private String name;    // Name of the user
-    private String email;   // Email address of the user
-
-    // Constructor to initialize User object
-    public User(String userID, String name, String email) {
-        this.userID = userID;
-        this.name = name;
-        this.email = email;
-    }
-
-    // Getters for user attributes
-    public String getUserID() {
-        return userID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    // Override toString method to display user details
-    @Override
-    public String toString() {
-        return "UserID: " + userID + ", Name: " + name + ", Email: " + email;
-    }
-}
-
-/**
- * Appointment class represents an appointment with attributes: appointmentID, patientName, doctorName, date, and time.
- */
-class Appointment {
-    private String appointmentID;  // Unique identifier for the appointment
-    private String patientName;    // Name of the patient
-    private String doctorName;     // Name of the doctor
-    private String date;           // Date of the appointment
-    private String time;           // Time of the appointment
-
-    // Constructor to initialize Appointment object
-    public Appointment(String appointmentID, String patientName, String doctorName, String date, String time) {
-        this.appointmentID = appointmentID;
-        this.patientName = patientName;
-        this.doctorName = doctorName;
-        this.date = date;
-        this.time = time;
-    }
-
-    // Getters for appointment attributes
-    public String getAppointmentID() {
-        return appointmentID;
-    }
-
-    // Override toString method to display appointment details
-    @Override
-    public String toString() {
-        return "AppointmentID: " + appointmentID + ", Patient: " + patientName + ", Doctor: " + doctorName
-                + ", Date: " + date + ", Time: " + time;
-    }
-}
-
-// Admin Dashboard Class
 /**
  * AdminDashboard class handles all the admin functionalities for managing users and appointments.
  * It provides options for adding/removing users, managing appointments, and generating reports.
@@ -101,10 +30,10 @@ public class AdminDashboard {
 
     // Add a new user to the system
     public void addUser(User user) {
-        if (users.containsKey(user.getUserID())) {  // Check if user already exists
-            System.out.println("User already exists with ID: " + user.getUserID());
+        if (users.containsKey(user.getId())) {  // Check if user already exists
+            System.out.println("User already exists with ID: " + user.getId());
         } else {
-            users.put(user.getUserID(), user);  // Add user to the system
+            users.put(user.getId(), user);  // Add user to the system
             System.out.println("User added successfully: " + user);
         }
     }
@@ -193,7 +122,22 @@ public class AdminDashboard {
                     String name = scanner.nextLine();
                     System.out.print("Enter Email: ");
                     String email = scanner.nextLine();
-                    addUser(new User(userID, name, email));  // Add a new user
+                    System.out.print("Enter Phone Number: ");
+                    String phoneNumber = scanner.nextLine();
+                    System.out.print("Are you a doctor or patient? (1: patient, 2: doctor): ");
+                    String type = scanner.nextLine();
+                    if (type.equals("2")) {
+                        System.out.print("Enter Specialization: ");
+                        String specialization = scanner.nextLine();
+                        System.out.print("Enter License Number: ");
+                        String licenseNumber = scanner.nextLine();
+                        addUser(new Doctor(userID, name, email, phoneNumber, specialization, licenseNumber));  // Add a new doctor
+                    }
+                    else {
+                        System.out.print("Enter Address: ");
+                        String address = scanner.nextLine();
+                        addUser(new Patient(userID, name, email, phoneNumber, address));  // Add a new patient
+                    }
                     break;
 
                 case 2:
@@ -213,11 +157,13 @@ public class AdminDashboard {
                     String patientName = scanner.nextLine();
                     System.out.print("Enter Doctor Name: ");
                     String doctorName = scanner.nextLine();
+                    System.out.print("Enter the reason: ");
+                    String reason = scanner.nextLine();
                     System.out.print("Enter Date (YYYY-MM-DD): ");
                     String date = scanner.nextLine();
                     System.out.print("Enter Time (HH:MM): ");
                     String time = scanner.nextLine();
-                    addAppointment(new Appointment(appointmentID, patientName, doctorName, date, time));  // Add an appointment
+                    addAppointment(new Appointment(appointmentID, doctorName, patientName, date, time, reason));  // Add an appointment
                     break;
 
                 case 5:
@@ -245,6 +191,11 @@ public class AdminDashboard {
         scanner.close();  // Close the scanner resource
     }
 
+    // get id
+    public String getAdminID() {
+        return adminID;
+    }
+    
     // Main method to start the Admin Dashboard application
     public static void main(String[] args) {
         AdminDashboard admin = new AdminDashboard("admin123");  // Create an admin dashboard with admin ID

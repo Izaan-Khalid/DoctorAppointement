@@ -7,8 +7,8 @@ public class Doctor extends User {
     private List<TimeSlot> availableSlots;
     private List<Appointment> appointments;
 
-    public Doctor(String name, String email, String password, String phoneNumber, String specilization, String licenseNumber) {
-        super(name, email, password, phoneNumber, "doctor");
+    public Doctor(String id, String name, String email, String phoneNumber, String specilization, String licenseNumber) {
+        super(id, name, email, phoneNumber, "doctor");
         this.specilization = specilization;
         this.licenseNumber = licenseNumber;
         this.availableSlots = new ArrayList<>();

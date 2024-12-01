@@ -61,6 +61,7 @@ public class AppointmentForm {
                 System.out.println("Invalid phone number. Please enter a valid phone number.");
             }
         }
+        scanner.close();
     }
 
     /**
@@ -131,6 +132,7 @@ public class AppointmentForm {
             System.out.println("Invalid input. Defaulting to In-Person.");
             isVirtual = false;  // Default to in-person if input is invalid
         }
+        scanner.close();
     }
 
     /**
