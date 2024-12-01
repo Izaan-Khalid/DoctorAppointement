@@ -14,7 +14,8 @@ import java.util.regex.Pattern;
  * ================================================================
  */
 
-public class AppointmentForm {
+public class AppointmentForm 
+{
     // Appointment details fields
     private String patientName;
     private String doctorName;
