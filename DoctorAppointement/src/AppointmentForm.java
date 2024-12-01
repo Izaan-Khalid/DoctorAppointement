@@ -1,6 +1,19 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * ================================================================
+ * Code Artifact: AppointmentForm
+ * Description: This program simulates an appointment form for patients. 
+ *              It collects patient information, validates the input (such as 
+ *              email, phone number, date, and time), and allows for virtual 
+ *              or in-person consultations. The program then displays the 
+ *              appointment details or cancels the appointment.
+ * Authors: Loveline Djamda
+ * Date: November 28, 2024
+ * ================================================================
+ */
+
 public class AppointmentForm {
     // Appointment details fields
     private String patientName;
