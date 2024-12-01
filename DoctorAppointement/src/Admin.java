@@ -3,18 +3,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-// Entity Classes
-class User {
-    private String userID;
-    private String name;
-    private String email;
+/**
+ * ================================================================
+ * Code Artifact: AdminDashboard
+ * Description: This program simulates an admin dashboard for managing users and appointments. 
+ *              It allows the admin to add, remove, and list users, add and cancel appointments, 
+ *              and generate reports on users and appointments.
+ * Authors: Loveline Djamda
+ * Date: November 28, 2024
+ * ================================================================
+ */
 
+// Entity Classes
+/**
+ * User class represents a user in the system with attributes: userID, name, and email.
+ */
+class User {
+    private String userID;  // Unique identifier for the user
+    private String name;    // Name of the user
+    private String email;   // Email address of the user
+
+    // Constructor to initialize User object
     public User(String userID, String name, String email) {
         this.userID = userID;
         this.name = name;
         this.email = email;
     }
 
+    // Getters for user attributes
     public String getUserID() {
         return userID;
     }
@@ -27,19 +43,24 @@ class User {
         return email;
     }
 
+    // Override toString method to display user details
     @Override
     public String toString() {
         return "UserID: " + userID + ", Name: " + name + ", Email: " + email;
     }
 }
 
+/**
+ * Appointment class represents an appointment with attributes: appointmentID, patientName, doctorName, date, and time.
+ */
 class Appointment {
-    private String appointmentID;
-    private String patientName;
-    private String doctorName;
-    private String date;
-    private String time;
+    private String appointmentID;  // Unique identifier for the appointment
+    private String patientName;    // Name of the patient
+    private String doctorName;     // Name of the doctor
+    private String date;           // Date of the appointment
+    private String time;           // Time of the appointment
 
+    // Constructor to initialize Appointment object
     public Appointment(String appointmentID, String patientName, String doctorName, String date, String time) {
         this.appointmentID = appointmentID;
         this.patientName = patientName;
@@ -48,10 +69,12 @@ class Appointment {
         this.time = time;
     }
 
+    // Getters for appointment attributes
     public String getAppointmentID() {
         return appointmentID;
     }
 
+    // Override toString method to display appointment details
     @Override
     public String toString() {
         return "AppointmentID: " + appointmentID + ", Patient: " + patientName + ", Doctor: " + doctorName
@@ -60,86 +83,91 @@ class Appointment {
 }
 
 // Admin Dashboard Class
+/**
+ * AdminDashboard class handles all the admin functionalities for managing users and appointments.
+ * It provides options for adding/removing users, managing appointments, and generating reports.
+ */
 public class AdminDashboard {
-    private String adminID;
-    private HashMap<String, User> users;
-    private HashMap<String, Appointment> appointments;
+    private String adminID;  // Admin's unique identifier
+    private HashMap<String, User> users;  // HashMap to store users by their userID
+    private HashMap<String, Appointment> appointments;  // HashMap to store appointments by their appointmentID
 
+    // Constructor to initialize AdminDashboard with admin ID and empty collections for users and appointments
     public AdminDashboard(String adminID) {
-        this.adminID = adminID;
-        this.users = new HashMap<>();
-        this.appointments = new HashMap<>();
+        this.adminID = adminID;  // Initialize admin ID
+        this.users = new HashMap<>();  // Initialize empty user list
+        this.appointments = new HashMap<>();  // Initialize empty appointment list
     }
 
-    // Add a new user
+    // Add a new user to the system
     public void addUser(User user) {
-        if (users.containsKey(user.getUserID())) {
+        if (users.containsKey(user.getUserID())) {  // Check if user already exists
             System.out.println("User already exists with ID: " + user.getUserID());
         } else {
-            users.put(user.getUserID(), user);
+            users.put(user.getUserID(), user);  // Add user to the system
             System.out.println("User added successfully: " + user);
         }
     }
 
-    // Remove a user
+    // Remove a user from the system
     public void removeUser(String userID) {
         if (users.containsKey(userID)) {
-            users.remove(userID);
+            users.remove(userID);  // Remove user from the system
             System.out.println("User removed successfully with ID: " + userID);
         } else {
             System.out.println("User not found with ID: " + userID);
         }
     }
 
-    // List all users
+    // List all users in the system
     public void listUsers() {
         if (users.isEmpty()) {
             System.out.println("No users found.");
         } else {
             System.out.println("List of Users:");
-            users.values().forEach(System.out::println);
+            users.values().forEach(System.out::println);  // Print details of all users
         }
     }
 
-    // Add an appointment
+    // Add an appointment to the system
     public void addAppointment(Appointment appointment) {
         if (appointments.containsKey(appointment.getAppointmentID())) {
             System.out.println("Appointment already exists with ID: " + appointment.getAppointmentID());
         } else {
-            appointments.put(appointment.getAppointmentID(), appointment);
+            appointments.put(appointment.getAppointmentID(), appointment);  // Add appointment to the system
             System.out.println("Appointment added successfully: " + appointment);
         }
     }
 
-    // Cancel an appointment
+    // Cancel an appointment from the system
     public void cancelAppointment(String appointmentID) {
         if (appointments.containsKey(appointmentID)) {
-            appointments.remove(appointmentID);
+            appointments.remove(appointmentID);  // Remove appointment from the system
             System.out.println("Appointment canceled successfully with ID: " + appointmentID);
         } else {
             System.out.println("Appointment not found with ID: " + appointmentID);
         }
     }
 
-    // List all appointments
+    // List all appointments in the system
     public void listAppointments() {
         if (appointments.isEmpty()) {
             System.out.println("No appointments found.");
         } else {
             System.out.println("List of Appointments:");
-            appointments.values().forEach(System.out::println);
+            appointments.values().forEach(System.out::println);  // Print details of all appointments
         }
     }
 
-    // Generate reports
+    // Generate a simple report on users and appointments
     public void generateReports() {
         System.out.println("===== Report =====");
-        System.out.println("Total Users: " + users.size());
-        System.out.println("Total Appointments: " + appointments.size());
+        System.out.println("Total Users: " + users.size());  // Print total number of users
+        System.out.println("Total Appointments: " + appointments.size());  // Print total number of appointments
         System.out.println("==================");
     }
 
-    // Admin Menu
+    // Admin Menu: Displays options and performs actions based on user's choice
     public void adminMenu() {
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -165,17 +193,17 @@ public class AdminDashboard {
                     String name = scanner.nextLine();
                     System.out.print("Enter Email: ");
                     String email = scanner.nextLine();
-                    addUser(new User(userID, name, email));
+                    addUser(new User(userID, name, email));  // Add a new user
                     break;
 
                 case 2:
                     System.out.print("Enter User ID to remove: ");
                     userID = scanner.nextLine();
-                    removeUser(userID);
+                    removeUser(userID);  // Remove a user
                     break;
 
                 case 3:
-                    listUsers();
+                    listUsers();  // List all users
                     break;
 
                 case 4:
@@ -189,36 +217,37 @@ public class AdminDashboard {
                     String date = scanner.nextLine();
                     System.out.print("Enter Time (HH:MM): ");
                     String time = scanner.nextLine();
-                    addAppointment(new Appointment(appointmentID, patientName, doctorName, date, time));
+                    addAppointment(new Appointment(appointmentID, patientName, doctorName, date, time));  // Add an appointment
                     break;
 
                 case 5:
                     System.out.print("Enter Appointment ID to cancel: ");
                     appointmentID = scanner.nextLine();
-                    cancelAppointment(appointmentID);
+                    cancelAppointment(appointmentID);  // Cancel an appointment
                     break;
 
                 case 6:
-                    listAppointments();
+                    listAppointments();  // List all appointments
                     break;
 
                 case 7:
-                    generateReports();
+                    generateReports();  // Generate a report of users and appointments
                     break;
 
                 case 8:
-                    System.out.println("Exiting Admin Dashboard. Goodbye!");
+                    System.out.println("Exiting Admin Dashboard. Goodbye!");  // Exit the dashboard
                     break;
 
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid choice. Please try again.");  // Handle invalid input
             }
         } while (choice != 8);
-        scanner.close();
+        scanner.close();  // Close the scanner resource
     }
 
+    // Main method to start the Admin Dashboard application
     public static void main(String[] args) {
-        AdminDashboard admin = new AdminDashboard("admin123");
-        admin.adminMenu();
+        AdminDashboard admin = new AdminDashboard("admin123");  // Create an admin dashboard with admin ID
+        admin.adminMenu();  // Display admin menu and start interaction
     }
 }

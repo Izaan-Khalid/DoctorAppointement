@@ -27,22 +27,24 @@ public class AppointmentForm {
 
     // Constructor to initialize patient name
     public AppointmentForm(String patientName) {
-        this.patientName = patientName;
+        this.patientName = patientName;  // Initializes the patient's name
     }
 
-    // Method to input and validate patient profile details (name, email, and phone)
+    /**
+     * Method to input and validate patient profile details (name, email, and phone)
+     */
     private void inputPatientProfile() {
         Scanner scanner = new Scanner(System.in);
 
         // Input Patient Name
         System.out.println("Enter your full name: ");
-        patientName = scanner.nextLine();
+        patientName = scanner.nextLine();  // Read the patient's name from user input
 
         // Input Patient Email with basic validation
         while (true) {
             System.out.println("Enter your email: ");
             patientEmail = scanner.nextLine();
-            if (isValidEmail(patientEmail)) {
+            if (isValidEmail(patientEmail)) {  // Check if the email is valid
                 break;
             } else {
                 System.out.println("Invalid email. Please enter a valid email address.");
@@ -53,7 +55,7 @@ public class AppointmentForm {
         while (true) {
             System.out.println("Enter your phone number: ");
             patientPhone = scanner.nextLine();
-            if (isValidPhoneNumber(patientPhone)) {
+            if (isValidPhoneNumber(patientPhone)) {  // Validate phone number format
                 break;
             } else {
                 System.out.println("Invalid phone number. Please enter a valid phone number.");
@@ -61,36 +63,42 @@ public class AppointmentForm {
         }
     }
 
-    // Method to check if the email is valid using regex
+    /**
+     * Method to check if the email is valid using regex
+     */
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        return pattern.matcher(email).matches();
+        Pattern pattern = Pattern.compile(emailRegex);  // Regex pattern for email validation
+        return pattern.matcher(email).matches();  // Return true if email matches the pattern
     }
 
-    // Method to check if the phone number is valid (simple validation)
+    /**
+     * Method to check if the phone number is valid (simple validation)
+     */
     private boolean isValidPhoneNumber(String phone) {
         String phoneRegex = "^[0-9]{10}$";  // Simple validation for 10 digits
-        Pattern pattern = Pattern.compile(phoneRegex);
-        return pattern.matcher(phone).matches();
+        Pattern pattern = Pattern.compile(phoneRegex);  // Regex pattern for phone number validation
+        return pattern.matcher(phone).matches();  // Return true if phone number matches the pattern
     }
 
-    // Method to input appointment details
+    /**
+     * Method to input appointment details
+     */
     public void fillForm() {
         Scanner scanner = new Scanner(System.in);
 
         // Input Patient Profile Details
-        inputPatientProfile();
+        inputPatientProfile();  // Collect patient details (name, email, phone)
 
         // Input Doctor's Name
         System.out.print("Enter Doctor's Name: ");
-        doctorName = scanner.nextLine();
+        doctorName = scanner.nextLine();  // Read doctor's name from input
 
         // Input Appointment Date with validation
         while (true) {
             System.out.print("Enter Appointment Date (YYYY-MM-DD): ");
             appointmentDate = scanner.nextLine();
-            if (isValidDate(appointmentDate)) {
+            if (isValidDate(appointmentDate)) {  // Validate the date format
                 break;
             } else {
                 System.out.println("Invalid date format. Please use YYYY-MM-DD.");
@@ -101,7 +109,7 @@ public class AppointmentForm {
         while (true) {
             System.out.print("Enter Appointment Time (HH:MM): ");
             appointmentTime = scanner.nextLine();
-            if (isValidTime(appointmentTime)) {
+            if (isValidTime(appointmentTime)) {  // Validate the time format
                 break;
             } else {
                 System.out.println("Invalid time format. Please use HH:MM.");
@@ -110,36 +118,42 @@ public class AppointmentForm {
 
         // Input Appointment Reason
         System.out.print("Enter the reason for the appointment: ");
-        appointmentReason = scanner.nextLine();
+        appointmentReason = scanner.nextLine();  // Get the reason for the appointment
 
         // Choose Appointment Type (Virtual or In-Person)
         System.out.print("Would you like to have a Virtual Consultation? (yes/no): ");
         String consultationType = scanner.nextLine().trim().toLowerCase();
         if (consultationType.equals("yes")) {
-            isVirtual = true;
+            isVirtual = true;  // Set virtual consultation flag
         } else if (consultationType.equals("no")) {
-            isVirtual = false;
+            isVirtual = false;  // Set in-person consultation flag
         } else {
             System.out.println("Invalid input. Defaulting to In-Person.");
-            isVirtual = false;
+            isVirtual = false;  // Default to in-person if input is invalid
         }
     }
 
-    // Method to validate the date format (YYYY-MM-DD)
+    /**
+     * Method to validate the date format (YYYY-MM-DD)
+     */
     private boolean isValidDate(String date) {
         String dateRegex = "^\\d{4}-\\d{2}-\\d{2}$";  // YYYY-MM-DD format
-        Pattern pattern = Pattern.compile(dateRegex);
-        return pattern.matcher(date).matches();
+        Pattern pattern = Pattern.compile(dateRegex);  // Regex for date format
+        return pattern.matcher(date).matches();  // Check if date matches the pattern
     }
 
-    // Method to validate time format (HH:MM)
+    /**
+     * Method to validate time format (HH:MM)
+     */
     private boolean isValidTime(String time) {
         String timeRegex = "^([01]\\d|2[0-3]):([0-5]\\d)$";  // HH:MM format
-        Pattern pattern = Pattern.compile(timeRegex);
-        return pattern.matcher(time).matches();
+        Pattern pattern = Pattern.compile(timeRegex);  // Regex for time format
+        return pattern.matcher(time).matches();  // Check if time matches the pattern
     }
 
-    // Method to display appointment details and submit
+    /**
+     * Method to display appointment details and submit
+     */
     public void submitForm() {
         // Simulate form submission (e.g., save to database or display confirmation)
         System.out.println("\nAppointment Submitted Successfully!");
@@ -153,7 +167,9 @@ public class AppointmentForm {
         System.out.println("Consultation Type: " + (isVirtual ? "Virtual" : "In-Person"));
     }
 
-    // Method to cancel the appointment form
+    /**
+     * Method to cancel the appointment form
+     */
     public void cancelForm() {
         System.out.println("\nAppointment Form Canceled.");
     }
@@ -183,7 +199,9 @@ public class AppointmentForm {
         return isVirtual;
     }
 
-    // Main method to simulate filling and submitting an appointment form
+    /**
+     * Main method to simulate filling and submitting an appointment form
+     */
     public static void main(String[] args) {
         // Create an appointment form for a patient
         AppointmentForm appointment = new AppointmentForm("John Doe");
