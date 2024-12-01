@@ -1,6 +1,19 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * ================================================================
+ * Code Artifact: Payment
+ * Description: This class simulates the payment process for medical services. 
+ *              It collects payment information, validates the input (such as 
+ *              credit card number or insurance provider), and processes the 
+ *              payment. It also handles various payment methods: credit card, 
+ *              cash, and insurance.
+ * Authors: Loveline Djamda
+ * Date: November 25, 2024
+ * ================================================================
+ */
+
 public class Payment {
 
     // Payment details fields
@@ -116,4 +129,3 @@ public class Payment {
         payment.confirmPayment();
     }
 }
-
