@@ -1,8 +1,15 @@
+
 /**
-* Represents a Patient in the medical appointment system.
-* Extends the User class with patient-specific attributes.
-* Maintains patient's personal information including residential address.
-*/
+ * ================================================================
+ * Code Artifact: Patient
+ * Description:   Represents a Patient in the medical appointment system.
+ *                Extends the User class with patient-specific attributes.
+ *                Maintains patient's personal information including residential address.
+ * Authors: Izaan Khalid
+ * Date: November 22, 2024
+ * ================================================================
+ */
+
 public class Patient extends User {
    // Residential address of the patient for medical records
    private String address;

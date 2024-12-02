@@ -3,10 +3,17 @@ import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 /**
- * Manages the entire appointment scheduling system for a medical facility.
- * Handles registration and tracking of doctors, patients, and appointments.
- * Provides functionality for searching doctors and managing appointments.
+ * ================================================================
+ * Code Artifact: AppointmentSystem
+ * Description:   Manages the entire appointment scheduling system for a medical facility.
+ *                Handles registration and tracking of doctors, patients, and appointments.
+ *                  Provides functionality for searching doctors and managing appointments.
+ * Authors: Izaan Khalid
+ * Date: November 22, 2024
+ * ================================================================
  */
+
+
 public class AppointmentSystem {
     // List to store all registered doctors in the system
     private List<Doctor> doctors;

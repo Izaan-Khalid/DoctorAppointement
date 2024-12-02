@@ -1,6 +1,14 @@
 /**
- * Represents a medical appointment in a healthcare system.
- * This class manages the relationship between doctors, patients, and scheduled time slots.
+ * ================================================================
+ * Code Artifact: Appointment
+ * Description:  Represents a medical appointment in a healthcare system.
+ *               This class manages the relationship between doctors, patients, and scheduled time slots.
+ * Authors: Izaan Khalid
+ * Date: November 22, 2024
+ * ================================================================
+ */
+
+/**
  * 
  * Key features:
  * - Tracks appointment status (pending, confirmed, cancelled)

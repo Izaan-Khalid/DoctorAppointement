@@ -2,10 +2,16 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
-* Represents a Doctor in the medical appointment system.
-* Extends the User class with additional doctor-specific attributes and functionalities.
-* Manages doctor's specialization, license, available time slots, and appointments.
-*/
+ * ================================================================
+ * Code Artifact: Doctor
+ * Description:   Represents a Doctor in the medical appointment system.
+ *                Extends the User class with additional doctor-specific attributes and functionalities.
+ *                Manages doctor's specialization, license, available time slots, and appointments.
+ * Authors: Izaan Khalid
+ * Date: November 22, 2024
+ * ================================================================
+ */
+
 public class Doctor extends User {
    // Medical specialization of the doctor (e.g., Cardiology, Pediatrics)
    private String specilization;

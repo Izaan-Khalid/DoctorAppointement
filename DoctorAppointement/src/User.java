@@ -1,8 +1,14 @@
 /**
-* Abstract base class representing a user in the medical appointment system.
-* Provides common attributes and functionality for both doctors and patients.
-* Cannot be instantiated directly - must be extended by concrete classes.
-*/
+ * ================================================================
+ * Code Artifact: User
+ * Description: Abstract base class representing a user in the medical appointment system.
+ *               Provides common attributes and functionality for both doctors and patients.
+ *               Cannot be instantiated directly - must be extended by concrete classes.
+ * Authors: Izaan Khalid
+ * Date: November 22, 2024
+ * ================================================================
+ */
+
 public abstract class User {
    // Unique identifier for each user in the system
    private String id;

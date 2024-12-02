@@ -1,0 +1,19 @@
+{
+	"configurations": [
+		{
+			"type": "java",
+			"name": "MainUI",
+			"request": "launch",
+			"mainClass": "MainUI",
+			"projectName": "DoctorAppointement_43f9a39e"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "C++ Debug",
+			"program": "${fileDirname}/${fileBasenameNoExtension}",
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		}
+	]
+}
